@@ -1,0 +1,34 @@
+{
+    "name": "FallingBlock",
+    "type": "dynamic",
+    "description": "Replace this string with a description",
+    "shape": [
+        
+        { "x": -5, "y": 5 },
+        { "x": 0, "y": 5 },
+        { "x": 0, "y": 15 },
+
+        { "x": 15, "y": 5 },
+        { "x": 15, "y": 10 },
+
+
+        { "x": 25, "y": 0 },
+
+
+        { "x": 15, "y": -10 },
+        { "x": 15, "y": -5 },
+
+        { "x": 0, "y": -15 },
+        { "x": 0, "y": -5 },
+        { "x": -5, "y": -5 }
+
+    ],
+    "friction": {
+      "collision": 5,
+      "linear": 40,
+      "rotational": 600
+    },
+    "sensors": [],
+    "mass": 1,    
+    "controller": "lib/falling_block.so"
+}
