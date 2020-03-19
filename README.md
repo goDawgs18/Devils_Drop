@@ -24,9 +24,9 @@ The user can always restart the game simply by click the "Go Down Devil's Drop" 
 
 #### Controls:
 - Press the button "Go Down Devil's Drop" to start skiing down the hill
-- Press "a" to move the player left
+- Press "a" to increase the players velocity to the left
 - Press "s" to make the player go straight down the hill or stop horizontal motion
-- Press "d" to move the player to the right
+- Press "d" to increase the players velocity to the right
 
 ## Project Information
 #### Goal of the project
