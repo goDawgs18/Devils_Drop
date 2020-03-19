@@ -1,5 +1,5 @@
 {
-    "name": "FallingBlock",
+    "name": "Tree",
     "type": "dynamic",
     "description": "Replace this string with a description",
     "shape": [
@@ -30,5 +30,5 @@
     },
     "sensors": [],
     "mass": 1,    
-    "controller": "lib/falling_block.so"
+    "controller": "lib/tree.so"
 }

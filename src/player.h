@@ -31,7 +31,7 @@ class PlayerController : public Process, public AgentInterface {
                 velocity += -4;
             } 
         });
-        notice_collisions_with("FallingBlock", [&](Event &e) {
+        notice_collisions_with("Tree", [&](Event &e) {
             std::cout << "Great Job! You made it " << score <<  " Feet down Devils Drop! \n";
             std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
 
@@ -47,7 +47,7 @@ class PlayerController : public Process, public AgentInterface {
                 emit(Event("destroyBlocks",{}));
                 std::cout<< "Good Luck! \n";
                 run = true;
-                teleport(0, -300, -3.1415);
+                teleport(0, -200, -3.1415);
                 velocity = 0;
             } 
         });
@@ -63,7 +63,7 @@ class PlayerController : public Process, public AgentInterface {
                 rampCount++;
                 auto x = rand() % 640 - 320;
                 auto y = rand() % 100 + 350;
-                add_agent("FallingBlock",x, y, -1.570796327, BLOCK_STYLE);
+                add_agent("Tree",x, y, -1.570796327, BLOCK_STYLE);
             }
             // std::cout << "count = " << count << '\n';
             // std::cout << "rampCount = " << rampCount << '\n';
@@ -86,10 +86,8 @@ class PlayerController : public Process, public AgentInterface {
     const json BLOCK_STYLE = { 
                    {"fill", "green"}, 
                    {"stroke", "black"}
-                //    ,{"strokeWidth", "1px"},
                };
-    // enviro::Agent pos;
-    // Agent neg;
+
 };
 
 class Player : public Agent {

@@ -23,7 +23,7 @@
             }
         },
         {
-            "definition": "defs/falling_block.json",
+            "definition": "defs/tree.json",
             "style": { "fill": "green", "stroke": "black" },
             "position": {
                 "x": 0, 

@@ -1,5 +1,5 @@
-#ifndef __FALLING_BLOCK_AGENT__H
-#define __FALLING_BLOCK_AGENT__H 
+#ifndef __TREE_AGENT__H
+#define __TREE_AGENT__H 
 
 #include "enviro.h"
 
@@ -10,10 +10,10 @@
 
 using namespace enviro;
 
-class FallingBlockController : public Process, public AgentInterface {
+class TreeController : public Process, public AgentInterface {
 
     public:
-    FallingBlockController() : Process(), AgentInterface() {}
+    TreeController() : Process(), AgentInterface() {}
 
     void init() {
         velocity = 100;
@@ -37,15 +37,15 @@ class FallingBlockController : public Process, public AgentInterface {
 
 };
 
-class FallingBlock : public Agent {
+class Tree : public Agent {
     public:
-    FallingBlock(json spec, World& world) : Agent(spec, world) {
+    Tree(json spec, World& world) : Agent(spec, world) {
         add_process(c);
     }
     private:
-    FallingBlockController c;
+    TreeController c;
 };
 
-DECLARE_INTERFACE(FallingBlock)
+DECLARE_INTERFACE(Tree)
 
 #endif
