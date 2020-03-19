@@ -1,5 +1,6 @@
 # Devils_Drop
-Ride down Devil's Drop if you dare!!! (EEP 520 final Project)
+Ride down Devil's Drop if you dare!!! Play as a brave skiier that takes on the ride of their life!
+(EEP 520 final Project)
 
 ## Game Details:
 #### How to set up the game:
