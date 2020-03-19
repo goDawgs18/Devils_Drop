@@ -67,6 +67,9 @@ class PlayerController : public Process, public AgentInterface {
                 run = true;
                 teleport(0, -200, -3.1415);
                 velocity = 0;
+                rampCount = 0;
+                score = 0;
+                count = 0;
             } 
         });
     }
