@@ -1,0 +1,20 @@
+{
+    "name": "Rock",
+    "type": "dynamic",
+    "description": "Replace this string with a description",
+    "shape": [
+        { "x": -15, "y": 20 },
+        { "x": 7, "y": 15 },
+        { "x": 13, "y": 0 },
+        { "x": 7, "y": -15 },
+        { "x": -15, "y": -20 }
+    ],
+    "friction": {
+      "collision": 5,
+      "linear": 40,
+      "rotational": 600
+    },
+    "sensors": [],
+    "mass": 1,    
+    "controller": "lib/rock.so"
+}

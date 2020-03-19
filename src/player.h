@@ -42,6 +42,19 @@ class PlayerController : public Process, public AgentInterface {
             count = 0;
             run = false;
         }); 
+
+        notice_collisions_with("Rock", [&](Event &e) {
+            std::cout << "Great Job! You made it " << score <<  " Feet down Devils Drop! \n";
+            std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
+
+            emit(Event("destroyBlocks",{}));
+            teleport(0, -1000, -3.1415);
+            rampCount = 0;
+            score = 0;
+            count = 0;
+            run = false;
+        }); 
+
         watch("button_click", [&](Event& e) {
             if ( e.value()["value"] == "start" ) {
                 emit(Event("destroyBlocks",{}));
@@ -63,7 +76,11 @@ class PlayerController : public Process, public AgentInterface {
                 rampCount++;
                 auto x = rand() % 640 - 320;
                 auto y = rand() % 100 + 350;
-                add_agent("Tree",x, y, -1.570796327, BLOCK_STYLE);
+                if (rand() %2 == 1) {
+                    add_agent("Tree",x, y, -1.570796327, TREE_STYLE);
+                } else {
+                    add_agent("Rock",x, y, -1.570796327, ROCK_STYLE);
+                }
             }
             // std::cout << "count = " << count << '\n';
             // std::cout << "rampCount = " << rampCount << '\n';
@@ -83,8 +100,13 @@ class PlayerController : public Process, public AgentInterface {
     int rampCount;
     int velocity;
     long score;
-    const json BLOCK_STYLE = { 
+    const json TREE_STYLE = { 
                    {"fill", "green"}, 
+                   {"stroke", "black"}
+               };
+
+    const json ROCK_STYLE = { 
+                   {"fill", "gray"}, 
                    {"stroke", "black"}
                };
 

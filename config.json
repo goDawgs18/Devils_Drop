@@ -30,6 +30,15 @@
                 "y": -300, 
                 "theta": -1.570796327
             }
+        },
+        {
+            "definition": "defs/rock.json",
+            "style": { "fill": "green", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": -300, 
+                "theta": -1.570796327
+            }
         }
     ],
 
