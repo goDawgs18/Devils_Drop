@@ -17,12 +17,13 @@ class PlayerController : public Process, public AgentInterface {
         rampCount = 0;
         velocity = 0;
         score = 0;
-        prevent_rotation();
-        //TODO: OVERRIDER THE DESCONSTRUCTOR TO DO THE SUPER BUT ALSO PRINT OUT THE FINAL SCORE
 
+        //do not want it to rotate
+        prevent_rotation();
+
+        // Will change how the player moves based on the keys
         watch("keyup", [&](Event &e) {
             auto k = e.value()["key"].get<std::string>();
-            // std::cout << "keyup event" << '\n';
             if ( k == "s" ) {
                 velocity = 0;           
             } else if ( k == "a" ) {
@@ -31,30 +32,34 @@ class PlayerController : public Process, public AgentInterface {
                 velocity += -4;
             } 
         });
+
+        // Makes sure everything ends when a tree gets hit
         notice_collisions_with("Tree", [&](Event &e) {
             std::cout << "Great Job! You made it " << score <<  " Feet down Devils Drop! \n";
             std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
 
             emit(Event("destroyBlocks",{}));
-            teleport(0, -1000, -3.1415);
+            teleport(0, -10000, -3.1415);
             rampCount = 0;
             score = 0;
             count = 0;
             run = false;
         }); 
 
+        // makes sure everything ends when a rock gets hit
         notice_collisions_with("Rock", [&](Event &e) {
             std::cout << "Great Job! You made it " << score <<  " Feet down Devils Drop! \n";
             std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
 
             emit(Event("destroyBlocks",{}));
-            teleport(0, -1000, -3.1415);
+            teleport(0, -10000, -3.1415);
             rampCount = 0;
             score = 0;
             count = 0;
             run = false;
         }); 
 
+        // Will start the game flow
         watch("button_click", [&](Event& e) {
             if ( e.value()["value"] == "start" ) {
                 emit(Event("destroyBlocks",{}));
@@ -68,22 +73,25 @@ class PlayerController : public Process, public AgentInterface {
     void start() {}
     void update() {
         track_velocity(velocity,0);
-        // move_toward(goal_x, 0);
-        // center(0.0, y());
+
+        // This if statement will only make everything start once user presses start
         if (run) {
+            // this if statment is used to control when objs get generated
             if (4 < count && 10 - rampCount < score %20 ) {
                 count = 0;
                 rampCount++;
+                //These will randomize locations of the obstacles
                 auto x = rand() % 640 - 320;
                 auto y = rand() % 100 + 350;
+                
+                //randomizes if a tree or rock gets generated
                 if (rand() %2 == 1) {
                     add_agent("Tree",x, y, -1.570796327, TREE_STYLE);
                 } else {
                     add_agent("Rock",x, y, -1.570796327, ROCK_STYLE);
                 }
             }
-            // std::cout << "count = " << count << '\n';
-            // std::cout << "rampCount = " << rampCount << '\n';
+
             if (rampCount > 10) {
                 count++;
             }
