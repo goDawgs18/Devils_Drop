@@ -39,7 +39,7 @@ class PlayerController : public Process, public AgentInterface {
             std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
 
             emit(Event("destroyBlocks",{}));
-            teleport(0, -10000, -3.1415);
+            teleport(0, -1000, -3.1415);
             rampCount = 0;
             score = 0;
             count = 0;
@@ -52,7 +52,7 @@ class PlayerController : public Process, public AgentInterface {
             std::cout << "Press \"Go Down Devil's Drop\" to try again \n";
 
             emit(Event("destroyBlocks",{}));
-            teleport(0, -10000, -3.1415);
+            teleport(0, -1000, -3.1415);
             rampCount = 0;
             score = 0;
             count = 0;
@@ -85,7 +85,7 @@ class PlayerController : public Process, public AgentInterface {
                 rampCount++;
                 //These will randomize locations of the obstacles
                 auto x = rand() % 640 - 320;
-                auto y = rand() % 100 + 350;
+                auto y = rand() % 100 + 300;
                 
                 //randomizes if a tree or rock gets generated
                 if (rand() %2 == 1) {
